@@ -1,6 +1,5 @@
 Feature: PC Builder GPT
 
-# **Feature**: View dropdown of part types
 #@PCTest
   Scenario: User opens the part page
    Given the user is on the home page
