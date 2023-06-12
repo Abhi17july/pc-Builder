@@ -3,6 +3,7 @@ package parallel;
 import com.pages.pcHomePage;
 import com.qa.factory.DriverFactory;
 import io.cucumber.datatable.DataTable;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -38,5 +39,20 @@ public class PCHomePageSteps {
 
 		Assert.assertTrue(expProductList.containsAll(actualProductList));
 		}
+
+	@And("user select {string} and add it in cart")
+	public  void addProductTOCart(String productName) throws InterruptedException {
+	pcHome.addToCart(productName);
+	}
+
+	@And("Validate below product in cart")
+	public void cartProductValidation(DataTable pList){
+		List<String> expProductList=pList.asList();
+		List<String> actProductList= pcHome.cartProduct();
+		System.out.println("Actual: "+actProductList);
+		System.out.println("Expected: "+expProductList);
+
+		Assert.assertTrue(actProductList.containsAll(expProductList));
+	}
 }
 
